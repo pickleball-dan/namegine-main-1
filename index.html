@@ -218,6 +218,10 @@
       box-shadow: var(--shadow);
     }
 
+    .taste-board.responding {
+      animation: board-breathe 460ms ease;
+    }
+
     .taste-question {
       margin: 0;
       font-size: 20px;
@@ -237,6 +241,33 @@
       gap: 14px;
     }
 
+    .sample-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .sample-tab {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: border 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .sample-tab:hover,
+    .sample-tab.active {
+      border-color: rgba(18, 172, 194, 0.68);
+      background: #effcff;
+      color: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
     .name-tile,
     .signal-card,
     .vertical-card,
@@ -251,7 +282,7 @@
       padding: 18px;
       cursor: pointer;
       opacity: 0.72;
-      transition: border 180ms ease, transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease, background 180ms ease;
+      transition: border 220ms ease, transform 220ms ease, box-shadow 220ms ease, opacity 220ms ease, background 220ms ease, filter 220ms ease;
     }
 
     .name-tile:hover,
@@ -265,7 +296,18 @@
 
     .name-tile.active {
       order: -1;
-      transform: scale(1.04);
+      transform: scale(1.035);
+      animation: selected-pop 360ms ease;
+    }
+
+    .taste-options.has-selection .name-tile:not(.active) {
+      opacity: 0.46;
+      filter: saturate(0.78);
+    }
+
+    .taste-options.has-selection .name-tile:not(.active):hover {
+      opacity: 0.9;
+      filter: saturate(1);
     }
 
     .name-tile strong {
@@ -285,6 +327,13 @@
 
     .signal-card {
       padding: 18px;
+      transition: border 220ms ease, box-shadow 220ms ease, background 220ms ease;
+    }
+
+    .taste-board.responding .signal-card {
+      border-color: rgba(18, 172, 194, 0.5);
+      background: #fbfeff;
+      box-shadow: 0 12px 26px rgba(7, 52, 109, 0.08);
     }
 
     .signal-card h2 {
@@ -298,36 +347,63 @@
       font-size: 14px;
     }
 
-    .signal-bars {
+    .next-names {
       display: grid;
-      gap: 11px;
-      margin-top: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 16px;
     }
 
-    .signal {
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 10px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 750;
+    .next-names span {
+      min-width: 0;
+      padding: 9px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f2fbfd;
+      color: var(--accent-strong);
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 700;
+      transition: transform 220ms ease, background 220ms ease, border 220ms ease;
     }
 
-    .track {
-      height: 8px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: #dceff5;
+    .taste-board.responding .next-names span {
+      border-color: rgba(18, 172, 194, 0.38);
+      background: #eafdff;
+      transform: translateY(-1px);
     }
 
-    .fill {
-      display: block;
-      width: var(--value);
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-      transition: width 220ms ease;
+    .sample-action {
+      margin-top: 16px;
+    }
+
+    .sample-action .button {
+      width: 100%;
+    }
+
+    @keyframes selected-pop {
+      0% {
+        transform: scale(0.98);
+      }
+      58% {
+        transform: scale(1.06);
+      }
+      100% {
+        transform: scale(1.035);
+      }
+    }
+
+    @keyframes board-breathe {
+      0% {
+        box-shadow: var(--shadow);
+      }
+      50% {
+        box-shadow: 0 22px 58px rgba(18, 172, 194, 0.2);
+      }
+      100% {
+        box-shadow: var(--shadow);
+      }
     }
 
     section {
@@ -486,88 +562,6 @@
       color: var(--muted);
     }
 
-    .demo {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-      gap: 28px;
-      align-items: stretch;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .demo-copy {
-      display: flex;
-      min-height: 360px;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 10px;
-    }
-
-    .demo-copy h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(34px, 4.5vw, 58px);
-      line-height: 1;
-    }
-
-    .demo-copy p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .demo-panel {
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #f2fbfd;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .choice {
-      min-height: 78px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 26px;
-      cursor: pointer;
-      transition: border 160ms ease, background 160ms ease, transform 160ms ease;
-    }
-
-    .choice:hover,
-    .choice.selected {
-      border-color: rgba(18, 172, 194, 0.72);
-      background: #edfbfd;
-      transform: translateY(-1px);
-    }
-
-    .taste-output {
-      min-height: 92px;
-      margin-top: 16px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .taste-output strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .taste-output span {
-      color: var(--muted);
-    }
-
     .membership {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
@@ -627,7 +621,6 @@
       }
 
       .hero,
-      .demo,
       .membership,
       .suggest-panel {
         grid-template-columns: 1fr;
@@ -664,7 +657,6 @@
       .taste-options,
       .vertical-grid,
       .steps,
-      .choice-grid,
       .membership-list {
         grid-template-columns: 1fr;
       }
@@ -673,7 +665,6 @@
         min-height: 190px;
       }
 
-      .demo,
       .membership,
       .suggest-panel {
         padding: 18px;
@@ -711,7 +702,7 @@
           <p class="hero-copy hero-memory">Because the right name should feel inevitable.</p>
           <div class="hero-actions">
             <a class="button primary" href="#verticals">Start Naming</a>
-            <a class="button secondary" href="#demo">Watch It Learn Your Taste</a>
+            <a class="button secondary" href="#sample">Try a Sample</a>
           </div>
           <div class="hero-proof" aria-label="NamEngine benefits">
             <span>Learns your taste</span>
@@ -720,34 +711,42 @@
           </div>
         </div>
 
-        <aside class="taste-board" aria-label="NamEngine taste preview">
-          <p class="taste-question">Which feels more like you?</p>
-          <p class="taste-subquestion">Choose a name and watch your style come into focus.</p>
+        <aside id="sample" class="taste-board" aria-label="NamEngine sample preview">
+          <p class="taste-question">Try a sample naming path.</p>
+          <p class="taste-subquestion">Choose a category, pick a name, then jump into that app.</p>
+          <div class="sample-tabs" aria-label="Choose a sample category">
+            <button class="sample-tab active" type="button" data-sample="baby">Baby</button>
+            <button class="sample-tab" type="button" data-sample="business">Business</button>
+            <button class="sample-tab" type="button" data-sample="pet">Pet</button>
+          </div>
           <div class="taste-options">
-            <button class="name-tile active" type="button" data-profile="classic" data-summary="We're learning that clear, timeless, graceful names feel right to you.">
+            <button class="name-tile active" type="button">
               <strong>Claire</strong>
               <span>Clear, timeless, graceful</span>
             </button>
-            <button class="name-tile" type="button" data-profile="warm" data-summary="We're learning that warm, vintage, grounded names feel right to you.">
+            <button class="name-tile" type="button">
               <strong>Hazel</strong>
               <span>Warm, vintage, grounded</span>
             </button>
-            <button class="name-tile" type="button" data-profile="modern" data-summary="We're learning that bright, modern, distinctive names feel right to you.">
+            <button class="name-tile" type="button">
               <strong>Nova</strong>
               <span>Bright, modern, distinctive</span>
             </button>
-            <button class="name-tile" type="button" data-profile="soft" data-summary="We're learning that soft, global, luminous names feel right to you.">
+            <button class="name-tile" type="button">
               <strong>Mira</strong>
               <span>Soft, global, luminous</span>
             </button>
           </div>
           <div class="signal-card">
-            <h2>We're learning what feels right to you.</h2>
-            <p class="js-hero-summary">We're learning that clear, timeless, graceful names feel right to you.</p>
-            <div class="signal-bars">
-              <div class="signal"><span>Timeless</span><span class="track"><span class="fill" style="--value: 74%"></span></span></div>
-              <div class="signal"><span>Warm</span><span class="track"><span class="fill" style="--value: 58%"></span></span></div>
-              <div class="signal"><span>Distinctive</span><span class="track"><span class="fill" style="--value: 42%"></span></span></div>
+            <h2 class="js-sample-heading">Sample result: Baby names</h2>
+            <p class="js-hero-summary">You picked Claire, so NamEngine would explore clear, timeless, graceful baby names.</p>
+            <div class="next-names" aria-label="Suggested names based on your choice">
+              <span>Elise</span>
+              <span>Juliet</span>
+              <span>Audrey</span>
+            </div>
+            <div class="sample-action">
+              <a class="button primary js-sample-link" href="https://namegine-app.onrender.com/">Start NamEngine Baby</a>
             </div>
           </div>
         </aside>
@@ -804,32 +803,6 @@
         </div>
       </section>
 
-      <section id="demo" aria-label="Interactive taste demo">
-        <div class="demo">
-          <div class="demo-copy">
-            <div>
-              <p class="eyebrow">Watch it learn</p>
-              <h2>The best names aren't found. They're discovered.</h2>
-              <p>People choose names because they say something about identity. NamEngine helps you notice what feels like you.</p>
-            </div>
-            <a class="button primary" href="#verticals">Choose a vertical</a>
-          </div>
-          <div class="demo-panel">
-            <p class="taste-question">Which name would you keep?</p>
-            <div class="choice-grid" aria-label="Choose preferred names">
-              <button class="choice selected" type="button" data-note="Your naming style is emerging: clear, classic, and confident.">Emma</button>
-              <button class="choice" type="button" data-note="Your naming style is emerging: refined, tailored, and softly elegant.">Claire</button>
-              <button class="choice" type="button" data-note="Your naming style is emerging: warm, literary, and a little vintage.">Hazel</button>
-              <button class="choice" type="button" data-note="Your naming style is emerging: polished, familiar, and graceful.">Sophia</button>
-            </div>
-            <p class="taste-output" aria-live="polite">
-              <strong>Your naming style is emerging.</strong>
-              <span>Your naming style is emerging: clear, classic, and confident.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section id="suggest" aria-label="Suggest the next NamEngine vertical">
         <div class="suggest-panel">
           <div>
@@ -876,36 +849,179 @@
   </div>
 
   <script>
-    const profileValues = {
-      classic: [74, 58, 42],
-      warm: [68, 82, 46],
-      modern: [38, 48, 84],
-      soft: [56, 76, 62]
+    const sampleData = {
+      baby: {
+        heading: "Sample result: Baby names",
+        action: "Start NamEngine Baby",
+        href: "https://namegine-app.onrender.com/",
+        choices: [
+          {
+            name: "Claire",
+            signal: "Clear, timeless, graceful",
+            summary: "You picked Claire, so NamEngine would explore clear, timeless, graceful baby names.",
+            next: ["Elise", "Juliet", "Audrey"]
+          },
+          {
+            name: "Hazel",
+            signal: "Warm, vintage, grounded",
+            summary: "You picked Hazel, so NamEngine would explore warm, vintage, grounded baby names.",
+            next: ["June", "Mabel", "Flora"]
+          },
+          {
+            name: "Nova",
+            signal: "Bright, modern, distinctive",
+            summary: "You picked Nova, so NamEngine would explore bright, modern, distinctive baby names.",
+            next: ["Lyra", "Arden", "Zara"]
+          },
+          {
+            name: "Mira",
+            signal: "Soft, global, luminous",
+            summary: "You picked Mira, so NamEngine would explore soft, global, luminous baby names.",
+            next: ["Lina", "Amara", "Noemi"]
+          }
+        ]
+      },
+      business: {
+        heading: "Sample result: Business names",
+        action: "Start NamEngine Business",
+        href: "https://namengine-business-app.onrender.com/",
+        choices: [
+          {
+            name: "AnchorCrew",
+            signal: "Reliable, human, service-led",
+            summary: "You picked AnchorCrew, so NamEngine would explore dependable, people-first business names.",
+            next: ["ReadyShift", "Crewstead", "HireHarbor"]
+          },
+          {
+            name: "LumaWorks",
+            signal: "Modern, polished, optimistic",
+            summary: "You picked LumaWorks, so NamEngine would explore bright, credible, startup-ready business names.",
+            next: ["BrightOps", "NorthLuma", "SignalWorks"]
+          },
+          {
+            name: "Fieldstone",
+            signal: "Established, grounded, trusted",
+            summary: "You picked Fieldstone, so NamEngine would explore sturdy, professional business names.",
+            next: ["Oakline", "TrueFound", "SteadyMark"]
+          },
+          {
+            name: "Kinetic",
+            signal: "Bold, active, growth-minded",
+            summary: "You picked Kinetic, so NamEngine would explore energetic, momentum-driven business names.",
+            next: ["Liftline", "VeloWorks", "IgniteOps"]
+          }
+        ]
+      },
+      pet: {
+        heading: "Sample result: Pet names",
+        action: "Start NamEngine Pet",
+        href: "https://namengine-pet-app.onrender.com/",
+        choices: [
+          {
+            name: "Milo",
+            signal: "Friendly, warm, playful",
+            summary: "You picked Milo, so NamEngine would explore friendly, easygoing pet names.",
+            next: ["Finn", "Teddy", "Louie"]
+          },
+          {
+            name: "Juniper",
+            signal: "Nature-inspired, sweet, distinctive",
+            summary: "You picked Juniper, so NamEngine would explore nature-rich, charming pet names.",
+            next: ["Clover", "Maple", "Willow"]
+          },
+          {
+            name: "Rocket",
+            signal: "Fast, funny, high-energy",
+            summary: "You picked Rocket, so NamEngine would explore lively, character-filled pet names.",
+            next: ["Dash", "Zippy", "Bolt"]
+          },
+          {
+            name: "Otis",
+            signal: "Old-soul, lovable, sturdy",
+            summary: "You picked Otis, so NamEngine would explore warm, classic pet names with personality.",
+            next: ["Walter", "Gus", "Winnie"]
+          }
+        ]
+      }
     };
 
     const heroSummary = document.querySelector(".js-hero-summary");
-    document.querySelectorAll(".name-tile").forEach((button) => {
+    const sampleHeading = document.querySelector(".js-sample-heading");
+    const sampleLink = document.querySelector(".js-sample-link");
+    const tasteBoard = document.querySelector(".taste-board");
+    const tasteOptions = document.querySelector(".taste-options");
+    const nextNames = document.querySelectorAll(".next-names span");
+    const nameTiles = Array.from(document.querySelectorAll(".name-tile"));
+
+    function pulseSample() {
+      if (!tasteBoard) {
+        return;
+      }
+      tasteBoard.classList.remove("responding");
+      void tasteBoard.offsetWidth;
+      tasteBoard.classList.add("responding");
+    }
+
+    function selectChoice(choice, button) {
+      nameTiles.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      if (tasteOptions) {
+        tasteOptions.classList.add("has-selection");
+        tasteOptions.prepend(button);
+      }
+      if (heroSummary) {
+        heroSummary.textContent = choice.summary;
+      }
+      nextNames.forEach((name, index) => {
+        name.textContent = choice.next[index] || "";
+      });
+      pulseSample();
+    }
+
+    function loadSample(type) {
+      const sample = sampleData[type] || sampleData.baby;
+      document.querySelectorAll(".sample-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.sample === type);
+      });
+      if (sampleHeading) {
+        sampleHeading.textContent = sample.heading;
+      }
+      if (sampleLink) {
+        sampleLink.textContent = sample.action;
+        sampleLink.href = sample.href;
+      }
+      nameTiles.forEach((button, index) => {
+        const choice = sample.choices[index];
+        button.querySelector("strong").textContent = choice.name;
+        button.querySelector("span").textContent = choice.signal;
+        button.classList.toggle("active", index === 0);
+        button._sampleChoice = choice;
+      });
+      if (tasteOptions) {
+        tasteOptions.classList.remove("has-selection");
+      }
+      if (heroSummary) {
+        heroSummary.textContent = sample.choices[0].summary;
+      }
+      nextNames.forEach((name, index) => {
+        name.textContent = sample.choices[0].next[index] || "";
+      });
+      pulseSample();
+    }
+
+    document.querySelectorAll(".sample-tab").forEach((button) => {
       button.addEventListener("click", () => {
-        document.querySelectorAll(".name-tile").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        const values = profileValues[button.dataset.profile] || profileValues.classic;
-        document.querySelectorAll(".signal .fill").forEach((fill, index) => {
-          fill.style.setProperty("--value", `${values[index]}%`);
-        });
-        if (heroSummary) {
-          heroSummary.textContent = button.dataset.summary;
-        }
+        loadSample(button.dataset.sample);
       });
     });
 
-    const output = document.querySelector(".taste-output span");
-    document.querySelectorAll(".choice").forEach((button) => {
+    nameTiles.forEach((button) => {
       button.addEventListener("click", () => {
-        document.querySelectorAll(".choice").forEach((item) => item.classList.remove("selected"));
-        button.classList.add("selected");
-        output.textContent = button.dataset.note;
+        selectChoice(button._sampleChoice || sampleData.baby.choices[0], button);
       });
     });
+
+    loadSample("baby");
 
     const suggestForm = document.querySelector(".suggest-form");
     if (suggestForm) {
