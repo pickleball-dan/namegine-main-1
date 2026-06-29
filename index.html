@@ -322,21 +322,6 @@
       line-height: 1;
     }
 
-    .name-tile em {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 11px;
-      font-style: normal;
-      font-weight: 850;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .name-tile.active em {
-      color: var(--accent-strong);
-    }
-
     .name-tile span {
       display: block;
       margin-top: 10px;
@@ -771,22 +756,18 @@
           </div>
           <div class="taste-options">
             <button class="name-tile active" type="button">
-              <em>Selected</em>
               <strong>Claire</strong>
               <span>Clear, timeless, graceful</span>
             </button>
             <button class="name-tile" type="button">
-              <em>Pick this</em>
               <strong>Hazel</strong>
               <span>Warm, vintage, grounded</span>
             </button>
             <button class="name-tile" type="button">
-              <em>Pick this</em>
               <strong>Nova</strong>
               <span>Bright, modern, distinctive</span>
             </button>
             <button class="name-tile" type="button">
-              <em>Pick this</em>
               <strong>Mira</strong>
               <span>Soft, global, luminous</span>
             </button>
@@ -1019,16 +1000,8 @@
     function selectChoice(choice, button) {
       nameTiles.forEach((item) => {
         item.classList.remove("active");
-        const label = item.querySelector("em");
-        if (label) {
-          label.textContent = "Pick this";
-        }
       });
       button.classList.add("active");
-      const selectedLabel = button.querySelector("em");
-      if (selectedLabel) {
-        selectedLabel.textContent = "Selected";
-      }
       if (tasteOptions) {
         tasteOptions.classList.add("has-selection");
       }
@@ -1058,10 +1031,6 @@
         button.querySelector("strong").textContent = choice.name;
         button.querySelector("span").textContent = choice.signal;
         button.classList.toggle("active", index === 0);
-        const label = button.querySelector("em");
-        if (label) {
-          label.textContent = index === 0 ? "Selected" : "Pick this";
-        }
         button._sampleChoice = choice;
       });
       if (tasteOptions) {
