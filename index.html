@@ -208,8 +208,8 @@
     .taste-board {
       position: relative;
       display: grid;
-      gap: 16px;
-      padding: 18px;
+      gap: 12px;
+      padding: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background:
@@ -298,23 +298,6 @@
       background: #effcff;
     }
 
-    .name-tile.active {
-      border-color: var(--accent);
-      box-shadow: 0 18px 36px rgba(7, 52, 109, 0.14);
-      opacity: 1;
-      background: #effcff;
-    }
-
-    .taste-options.has-selection .name-tile:not(.active) {
-      opacity: 0.46;
-      filter: saturate(0.78);
-    }
-
-    .taste-options.has-selection .name-tile:not(.active):hover {
-      opacity: 0.9;
-      filter: saturate(1);
-    }
-
     .name-tile strong {
       display: block;
       font-family: Georgia, "Times New Roman", serif;
@@ -331,7 +314,7 @@
     }
 
     .signal-card {
-      padding: 18px;
+      padding: 14px;
       transition: border 220ms ease, box-shadow 220ms ease, background 220ms ease;
     }
 
@@ -354,7 +337,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 10px;
     }
 
     .next-names span {
@@ -377,7 +360,7 @@
     }
 
     .sample-action {
-      margin-top: 16px;
+      margin-top: 10px;
     }
 
     .sample-action .button {
@@ -746,7 +729,7 @@
           </div>
         </div>
 
-        <aside id="sample" class="taste-board" data-sample-version="fixed-slots-20260629" aria-label="NamEngine sample preview">
+        <aside id="sample" class="taste-board" data-sample-version="static-sample-cards-20260629" aria-label="NamEngine sample preview">
           <p class="taste-question">Try a sample naming path.</p>
           <p class="taste-subquestion">Choose what you're naming, then pick the sample name you like best.</p>
           <div class="sample-tabs" aria-label="Choose a sample category">
@@ -755,7 +738,7 @@
             <button class="sample-tab" type="button" data-sample="pet">Pet</button>
           </div>
           <div class="taste-options">
-            <button class="name-tile active" type="button">
+            <button class="name-tile" type="button">
               <strong>Claire</strong>
               <span>Clear, timeless, graceful</span>
             </button>
@@ -1009,13 +992,6 @@
 
     function selectChoice(choice, button) {
       restoreTileOrder();
-      nameTiles.forEach((item) => {
-        item.classList.remove("active");
-      });
-      button.classList.add("active");
-      if (tasteOptions) {
-        tasteOptions.classList.add("has-selection");
-      }
       if (heroSummary) {
         heroSummary.textContent = choice.summary;
       }
@@ -1042,12 +1018,8 @@
         const choice = sample.choices[index];
         button.querySelector("strong").textContent = choice.name;
         button.querySelector("span").textContent = choice.signal;
-        button.classList.toggle("active", index === 0);
         button._sampleChoice = choice;
       });
-      if (tasteOptions) {
-        tasteOptions.classList.remove("has-selection");
-      }
       if (heroSummary) {
         heroSummary.textContent = sample.choices[0].summary;
       }
