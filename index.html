@@ -242,27 +242,34 @@
     }
 
     .sample-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
     }
 
     .sample-tab {
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: transparent;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
       color: var(--muted);
       font: inherit;
       font-size: 13px;
       font-weight: 800;
       cursor: pointer;
-      padding: 8px 0;
-      transition: border 180ms ease, color 180ms ease;
+      transition: border 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
     }
 
-    .sample-tab:hover,
+    .sample-tab:hover {
+      border-color: rgba(18, 172, 194, 0.22);
+      background: #f7fbfc;
+      color: var(--ink);
+    }
+
     .sample-tab.active {
-      border-color: var(--accent);
+      border-color: rgba(7, 52, 109, 0.18);
+      background: #fff;
+      box-shadow: inset 0 -3px 0 var(--accent);
       color: var(--ink);
     }
 
