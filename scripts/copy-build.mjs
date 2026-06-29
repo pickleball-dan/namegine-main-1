@@ -26,7 +26,7 @@ const types = {
 
 function fileFor(urlPath) {
   const clean = normalize(decodeURIComponent(urlPath.split("?")[0])).replace(/^([.][.][\\\\/])+/, "");
-  const candidate = clean === "/" ? "index.html" : clean.replace(/^\\\\//, "");
+  const candidate = clean === "/" ? "index.html" : clean.startsWith("/") ? clean.slice(1) : clean;
   const direct = join(root, candidate);
   return existsSync(direct) ? direct : join(root, "index.html");
 }
