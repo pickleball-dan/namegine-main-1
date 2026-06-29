@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: namengine-app
+    name: namengine-main
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist

@@ -389,40 +389,6 @@
       mix-blend-mode: multiply;
     }
 
-    .vertical-card img[src*="-small"] {
-      transform: scale(1.22);
-    }
-
-    .status-badge {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      max-width: calc(100% - 28px);
-      min-height: 30px;
-      padding: 6px 10px;
-      border: 1px solid rgba(18, 172, 194, 0.2);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      color: var(--accent-strong);
-      font-size: 12px;
-      font-weight: 700;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(7, 52, 109, 0.08);
-    }
-
-    .status-badge.alive,
-    .status-badge.suggest-status {
-      color: var(--accent-strong);
-    }
-
-    .status-badge.awakening {
-      color: var(--gold);
-      border-color: rgba(202, 149, 58, 0.24);
-    }
-
     .suggest-panel {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
@@ -794,28 +760,22 @@
         </div>
         <div class="vertical-grid">
           <a class="vertical-card" href="https://namengine-baby-app.onrender.com/" aria-label="Baby naming, alive">
-            <img src="assets/namengine-baby-small.png" alt="Baby naming logo">
-            <span class="status-badge alive">Alive</span>
+            <img src="assets/namengine-baby-logo.jpg" alt="NamEngine Baby logo">
           </a>
           <a class="vertical-card" href="https://namengine-business-app.onrender.com/" aria-label="Business naming, alive">
             <img src="assets/namengine-business-logo.jpg" alt="NamEngine Business logo">
-            <span class="status-badge alive">Alive</span>
           </a>
           <a class="vertical-card" href="https://namengine-pet-app.onrender.com/" aria-label="Pet naming, alive">
-            <img src="assets/namengine-pets-small.png" alt="Pet naming logo">
-            <span class="status-badge alive">Alive</span>
+            <img src="assets/namengine-pet-logo.jpg" alt="NamEngine Pet logo">
           </a>
           <a class="vertical-card" href="#plus" aria-label="Product naming, awakening soon">
             <img src="assets/namengine-product-logo.jpg" alt="NamEngine Product logo">
-            <span class="status-badge awakening">Awakening Soon</span>
           </a>
           <a class="vertical-card" href="#plus" aria-label="Podcasts and Channels naming, awakening soon">
             <img src="assets/namengine-podcasts-channels-logo.jpg" alt="NamEngine Podcasts Channels logo">
-            <span class="status-badge awakening">Awakening Soon</span>
           </a>
           <a class="vertical-card" href="#suggest" aria-label="Suggest the next NamEngine vertical">
             <img src="assets/namengine-suggest-logo.jpg" alt="NamEngine Suggest logo">
-            <span class="status-badge suggest-status">Suggest Next</span>
           </a>
         </div>
       </section>

@@ -381,40 +381,6 @@
       mix-blend-mode: multiply;
     }
 
-    .vertical-card img[src*="-small"] {
-      transform: scale(1.22);
-    }
-
-    .status-badge {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      max-width: calc(100% - 28px);
-      min-height: 30px;
-      padding: 6px 10px;
-      border: 1px solid rgba(18, 172, 194, 0.2);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      color: var(--accent-strong);
-      font-size: 12px;
-      font-weight: 700;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(7, 52, 109, 0.08);
-    }
-
-    .status-badge.alive,
-    .status-badge.suggest-status {
-      color: var(--accent-strong);
-    }
-
-    .status-badge.awakening {
-      color: var(--gold);
-      border-color: rgba(202, 149, 58, 0.24);
-    }
-
     .suggest-panel {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
