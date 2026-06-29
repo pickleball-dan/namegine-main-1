@@ -746,7 +746,7 @@
           </div>
         </div>
 
-        <aside id="sample" class="taste-board" aria-label="NamEngine sample preview">
+        <aside id="sample" class="taste-board" data-sample-version="fixed-slots-20260629" aria-label="NamEngine sample preview">
           <p class="taste-question">Try a sample naming path.</p>
           <p class="taste-subquestion">Choose what you're naming, then pick the sample name you like best.</p>
           <div class="sample-tabs" aria-label="Choose a sample category">
@@ -987,6 +987,16 @@
     const tasteOptions = document.querySelector(".taste-options");
     const nextNames = document.querySelectorAll(".next-names span");
     const nameTiles = Array.from(document.querySelectorAll(".name-tile"));
+    const fixedTileOrder = [...nameTiles];
+
+    function restoreTileOrder() {
+      if (!tasteOptions) {
+        return;
+      }
+      fixedTileOrder.forEach((tile) => {
+        tasteOptions.appendChild(tile);
+      });
+    }
 
     function pulseSample() {
       if (!tasteBoard) {
@@ -998,6 +1008,7 @@
     }
 
     function selectChoice(choice, button) {
+      restoreTileOrder();
       nameTiles.forEach((item) => {
         item.classList.remove("active");
       });
@@ -1015,6 +1026,7 @@
     }
 
     function loadSample(type) {
+      restoreTileOrder();
       const sample = sampleData[type] || sampleData.baby;
       document.querySelectorAll(".sample-tab").forEach((tab) => {
         tab.classList.toggle("active", tab.dataset.sample === type);
