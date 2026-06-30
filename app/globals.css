@@ -197,6 +197,19 @@
       background: rgba(255, 255, 255, 0.6);
     }
 
+    .sample-motif {
+      width: min(170px, 48vw);
+      margin: 0 auto 2px;
+      mix-blend-mode: multiply;
+    }
+
+    .sample-motif svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
     .taste-board {
       position: relative;
       display: grid;
@@ -686,6 +699,10 @@
 
       .hero h1 {
         font-size: clamp(48px, 13.4vw, 56px);
+      }
+
+      .sample-motif {
+        width: min(150px, 48vw);
       }
 
       .taste-options,
