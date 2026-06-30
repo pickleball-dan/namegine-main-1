@@ -157,6 +157,20 @@
       mix-blend-mode: multiply;
     }
 
+    .hero-main-motif {
+      width: min(220px, 52vw);
+      margin: -10px 0 24px;
+      padding: 0;
+    }
+
+    .hero-main-motif svg,
+    .hero-main-motif img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -704,6 +718,11 @@
         font-size: clamp(48px, 13.4vw, 56px);
       }
 
+      .hero-main-motif {
+        width: min(190px, 55vw);
+        margin: -12px 0 18px;
+      }
+
       .sample-motif {
         width: min(150px, 48vw);
       }
@@ -749,6 +768,9 @@
         <div>
           <figure class="brand-lockup" aria-label="NamEngine Plus logo">
             <img src="assets/namengine-plus-logo.jpg" alt="NamEngine+ where every name begins">
+          </figure>
+          <figure class="hero-main-motif" aria-hidden="true">
+            <img src="assets/namengine-main-motif.svg" alt="" aria-hidden="true">
           </figure>
           <p class="eyebrow">AI that learns your taste</p>
           <h1>Find the name that <span class="keep-together">feels right.</span></h1>

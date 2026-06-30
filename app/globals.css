@@ -135,6 +135,20 @@
       mix-blend-mode: multiply;
     }
 
+    .hero-main-motif {
+      width: min(220px, 52vw);
+      margin: -10px 0 24px;
+      padding: 0;
+    }
+
+    .hero-main-motif svg,
+    .hero-main-motif img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -699,6 +713,11 @@
 
       .hero h1 {
         font-size: clamp(48px, 13.4vw, 56px);
+      }
+
+      .hero-main-motif {
+        width: min(190px, 55vw);
+        margin: -12px 0 18px;
       }
 
       .sample-motif {

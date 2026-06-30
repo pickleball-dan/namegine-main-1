@@ -13,7 +13,11 @@ function readLandingPage() {
   const body = bodyMatch
     ? bodyMatch[1]
         .trim()
-        .replace(
+        .replaceAll(
+          '<img src="assets/namengine-main-motif.svg" alt="" aria-hidden="true">',
+          mainMotifSvg
+        )
+        .replaceAll(
           '<img class="sample-motif" src="assets/namengine-main-motif.svg" alt="" aria-hidden="true">',
           `<div class="sample-motif" aria-hidden="true">${mainMotifSvg}</div>`
         )
