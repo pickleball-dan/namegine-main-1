@@ -356,15 +356,17 @@
 
     .next-names span {
       min-width: 0;
-      padding: 9px 8px;
+      padding: 9px 6px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #f2fbfd;
       color: var(--accent-strong);
       text-align: center;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
+      font-size: clamp(11px, 2.6vw, 15px);
+      line-height: 1.08;
       font-weight: 700;
+      white-space: nowrap;
       transition: transform 220ms ease, background 220ms ease, border 220ms ease;
     }
 
