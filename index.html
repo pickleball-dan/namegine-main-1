@@ -454,6 +454,17 @@
       box-shadow: 0 14px 28px rgba(7, 52, 109, 0.1);
     }
 
+    .vertical-card.future {
+      cursor: default;
+    }
+
+    .vertical-card.future:hover,
+    .vertical-card.future:focus-visible {
+      border-color: var(--line);
+      transform: none;
+      box-shadow: none;
+    }
+
     .vertical-card img {
       width: 100%;
       height: 154px;
@@ -478,7 +489,7 @@
       position: absolute;
       left: 50%;
       bottom: 18px;
-      transform: translate(-50%, 10px);
+      transform: translate(-50%, 0);
       padding: 9px 14px;
       border: 1px solid rgba(18, 172, 194, 0.34);
       border-radius: 999px;
@@ -488,22 +499,9 @@
       font-size: 13px;
       letter-spacing: 0.02em;
       white-space: nowrap;
-      opacity: 0;
-      box-shadow: 0 12px 24px rgba(7, 52, 109, 0.12);
-      transition: opacity 160ms ease, transform 160ms ease;
-      pointer-events: none;
-    }
-
-    .vertical-card.future:hover::before,
-    .vertical-card.future:focus-visible::before,
-    .vertical-card.future:hover::after,
-    .vertical-card.future:focus-visible::after {
       opacity: 1;
-    }
-
-    .vertical-card.future:hover::after,
-    .vertical-card.future:focus-visible::after {
-      transform: translate(-50%, 0);
+      box-shadow: 0 12px 24px rgba(7, 52, 109, 0.12);
+      pointer-events: none;
     }
 
     .suggest-panel {
@@ -808,12 +806,12 @@
           <a class="vertical-card" href="https://namengine-pet-app.onrender.com/" aria-label="Pet naming, alive">
             <img src="assets/namengine-pet-logo.jpg" alt="NamEngine Pet logo">
           </a>
-          <a class="vertical-card future" href="#plus" data-status="Awakening Soon" aria-label="Product naming, awakening soon">
+          <div class="vertical-card future" data-status="Awakening Soon" aria-label="Product naming, awakening soon">
             <img src="assets/namengine-product-logo.jpg" alt="NamEngine Product logo">
-          </a>
-          <a class="vertical-card future" href="#plus" data-status="Awakening Soon" aria-label="Podcasts and Channels naming, awakening soon">
+          </div>
+          <div class="vertical-card future" data-status="Awakening Soon" aria-label="Podcasts and Channels naming, awakening soon">
             <img src="assets/namengine-podcasts-channels-logo.jpg" alt="NamEngine Podcasts Channels logo">
-          </a>
+          </div>
           <a class="vertical-card" href="#suggest" aria-label="Suggest the next NamEngine vertical">
             <img src="assets/namengine-suggest-logo.jpg" alt="NamEngine Suggest logo">
           </a>
